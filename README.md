@@ -26,6 +26,8 @@ You can fetch following product details from Flipkart :
 
 - Shareable URL (without uncessary arguments)
 
+- Flipkart Assured or not (f-assured status)
+
 - Stock details
 
 - General Stock detail (without entering pincode)
@@ -50,7 +52,17 @@ You can fetch following product details from Flipkart :
 
     One can also use the [terminal-script.py provided in the root folder](terminal-script.py)
 
-    You will be asked for the product link and then the pincode of your location and revert you back with product and stock details.
+    1. Clone the repository to your system.
+
+    2. Install the python modules (one-time measure):
+
+        `pip install -r requirements.txt`
+
+    3. Run the script in the root directory :
+
+        `python terminal-script.py`
+
+    4. You will be asked for the product link and then the pincode of your location and will be reverted back with product and stock details
 
 ---
 
