@@ -1,4 +1,4 @@
-import flipkart
+import API.flipkart as flipkart
 import asyncio
 
 
@@ -15,7 +15,7 @@ async def main(link, pincode):
     print('In Stock (for pincode '+str(result["stock_details"]["pincode"])+') : ' +
           str(result["stock_details"]["pincode_stock"]))
 
-br = '__________________________________________________'
+br = '___________________________________________________________'
 
 print('=> flipkart-product-stock')
 print('=> Flipkart Product Stock Details in a specific pincode')
@@ -24,4 +24,5 @@ link = input("Input link of product : ")
 pincode = input("Your pincode : ")
 print(br)
 print('Please wait while we check in marketplace...')
+print(br)
 asyncio.run(main(link, pincode))

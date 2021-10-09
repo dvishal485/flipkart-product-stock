@@ -1,17 +1,20 @@
 from typing import Optional
-import flipkart
+import API.flipkart as flipkart
 import json
 from fastapi import FastAPI
 
 app = FastAPI()
 
+
 @app.get("/")
 def read_root():
     return {
         "api_name": "flipkart-product-stock",
+        "repository": "https://github.com/dvishal485/flipkart-product-stock",
         "author": "dvisha485@gmail.com",
         "description": "API to scrapes product details and pincode specific stock from Flipkart",
-        "example": "./product?link=https://dl.flipkart.com/s/3wCLKlNNNN&pincode=110051"
+        "usage": "https://flipkart-product-stock.herokuapp.com/product?link={product_link}&pincode={pincode}",
+        "example": "https://flipkart-product-stock.herokuapp.com/product?link=https://dl.flipkart.com/s/WaqrsvNNNN&pincode=712702"
     }
 
 
