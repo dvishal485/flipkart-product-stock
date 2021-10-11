@@ -18,7 +18,7 @@ You can fetch following product details from Flipkart :
 
 - Product Name
 
-- Current Price
+- Current Price (specific to given pincode)
 
 - Original Price / MRP
 
@@ -106,5 +106,7 @@ The API is easy to use and understand, but in case of any problem do check out t
 ## ToDo
 
 - [x] Make an API usage guide
-- [x] Add deploy to Heroku button
-- [ ] Add support for more products
+- [x] Add Deploy to Heroku button
+- [x] Add Support for more Products
+- [x] Get Product Price specific to the pincode
+- [ ] Improve accuracy
