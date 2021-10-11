@@ -46,22 +46,22 @@ async def getProductDetails(productLink, pincode):
                 await pincodeField[0].type(str(pincode))
             except:
                 try:
-                    await page.waitForSelector('input[class="cfnctZ"]', timeout=1000)
+                    await page.waitForSelector('input[class="cfnctZ"]', timeout=1200)
                 except:
                     pincodeDropDownMenu = await page.querySelector('img[src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5IiBoZWlnaHQ9IjUiPjxwYXRoIGZpbGw9IiMyMTIxMjEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTS4yMjcuNzAzQy0uMTY4LjMxNS0uMDMyIDAgLjUxNCAwaDcuOTY1Yy41NTYgMCAuNjg1LjMxNy4yOTguNjk4TDcuNjQgMS44MThsLTIuNDI3IDIuMzlhMS4wMiAxLjAyIDAgMCAxLTEuNDI3LS4wMDNMLjIyNy43MDN6Ii8+PC9zdmc+"]')
                     await pincodeDropDownMenu.click()
-                    await page.waitForSelector('input[class="cfnctZ"]', timeout=1000)
+                    await page.waitForSelector('input[class="cfnctZ"]', timeout=1100)
                 pincodeField = await page.querySelectorAll('input[class="cfnctZ"]')
                 await pincodeField[0].click(clickCount=3)
                 await pincodeField[0].type(str(pincode))
             checkButton = await page.Jx('//span[contains(text(), "Check")]')
             await checkButton[0].click()
             try:
-                await page.waitForXPath('//div[contains(text(), "Currently out of stock in this area.")]', timeout=2000)
+                await page.waitForXPath('//div[contains(text(), "Currently out of stock in this area.")]', timeout=1500)
                 pincodeStock = False
             except:
                 try:
-                    await page.waitForXPath('//div[contains(text(), "Not a valid pincode")]', timeout=500)
+                    await page.waitForXPath('//div[contains(text(), "Not a valid pincode")]', timeout=800)
                     pincodeStock = False
                 except:
                     pincodeStock = True
@@ -71,7 +71,7 @@ async def getProductDetails(productLink, pincode):
         webPage = webPage.replace('&amp;', '&')
 
         try:
-            productTitleSelector = await page.waitForSelector('h1', timeout=2000)
+            productTitleSelector = await page.waitForSelector('h1', timeout=1500)
             productName = await page.evaluate('(el)=>el.textContent', productTitleSelector)
         except:
             productName = webPage.split('class="B_NuCI')[1].split(
@@ -110,7 +110,7 @@ async def getProductDetails(productLink, pincode):
             discountPercent = math.floor(discount/originalPrice * 100)
             discountPercentIndicator = str(discountPercent) + '% off'
         try:
-            await page.waitForSelector('img[class="jMnjzX"]', timeout=500)
+            await page.waitForSelector('img[class="jMnjzX"]', timeout=1000)
             fassured = True
         except:
             fassured = False

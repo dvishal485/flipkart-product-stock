@@ -8,7 +8,7 @@ You can also deploy the API yourself on Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-(API will be disabled at night, host your own to get access of API at those hour) : [See Important Note](#important-note)
+(API will be disabled at night, host your own to get access of API at those hours) : [See Important Note](#important-note)
 
 ---
 
@@ -24,7 +24,7 @@ You can fetch following product details from Flipkart :
 
 - Discount offered
 
-- Shareable URL (without uncessary arguments)
+- Shareable URL (without unnecessary arguments)
 
 - Flipkart Assured or not (f-assured status)
 
@@ -87,8 +87,8 @@ The API is easy to use and understand, but in case of any problem do check out t
 ```json
 {
   "name": "42 Years Chapterwise Topicwise Solved Papers (2020-1979) Iit Jee Chemistry  (English, Paperback, Shahi Ranjeet)",
-  "current_price": "236",
-  "original_price": "430",
+  "current_price": 236,
+  "original_price": 430,
   "discount": "45% off",
   "share_url": "https://dl.flipkart.com/s/WaqrsvNNNN",
   "fassured": true,
@@ -109,4 +109,4 @@ The API is easy to use and understand, but in case of any problem do check out t
 - [x] Add Deploy to Heroku button
 - [x] Add Support for more Products
 - [x] Get Product Price specific to the pincode
-- [ ] Improve accuracy
+- [x] Improve accuracy (worked for all Flipkart links which were tested)
