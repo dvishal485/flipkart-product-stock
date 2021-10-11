@@ -37,7 +37,7 @@ async def getProductDetails(productLink, pincode):
             inStock = False
         else:
             inStock = True
-        if (not comingSoon):
+        if (inStock):
             try:
                 pincodeField = await page.xpath('//input[@id="pincodeInputId"]')
                 await pincodeField[0].click(clickCount=3)
@@ -63,7 +63,8 @@ async def getProductDetails(productLink, pincode):
                     pincodeStock = False
                 except:
                     pincodeStock = True
-
+        else:
+            pincodeStock = False
         webPage = await page.content()
         webPage = webPage.replace('&amp;', '&')
 
