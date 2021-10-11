@@ -26,11 +26,13 @@ async def getProductDetails(productLink, pincode):
         except:
             None
         try:
-            outOfStock = (await page.Jx('//div[contains(text(), "currently out of stock")]')).length > 0
+            await page.waitForXPath('//div[contains(text(), "currently out of stock")]', timeout=500)
+            outOfStock = True
         except:
             outOfStock = False
         try:
-            comingSoon = (await page.Jx('//div[contains(text(), "Coming Soon")]')).length > 0
+            await page.waitForXPath('//div[contains(text(), "Coming Soon")]', timeout=500)
+            comingSoon = True
         except:
             comingSoon = False
         if (comingSoon or outOfStock):
