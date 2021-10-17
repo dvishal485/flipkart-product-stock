@@ -64,7 +64,11 @@ async def getProductDetails(productLink, pincode):
                     await page.waitForXPath('//div[contains(text(), "Not a valid pincode")]', timeout=800)
                     pincodeStock = False
                 except:
-                    pincodeStock = True
+                    try:
+                        await page.waitForXPath('//div[contains(text(), "No seller")]', timeout=1500)
+                        pincodeStock = False
+                    except:
+                        pincodeStock = True
         else:
             pincodeStock = False
         webPage = await page.content()
