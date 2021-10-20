@@ -26,12 +26,12 @@ async def getProductDetails(productLink, pincode):
         except:
             None
         try:
-            await page.waitForXPath('//div[contains(text(), "currently out of stock")]', timeout=500)
+            await page.waitForXPath('//div[contains(text(), "currently out of stock")]', timeout=1000)
             outOfStock = True
         except:
             outOfStock = False
         try:
-            await page.waitForXPath('//div[contains(text(), "Coming Soon")]', timeout=500)
+            await page.waitForXPath('//div[contains(text(), "Coming Soon")]', timeout=800)
             comingSoon = True
         except:
             comingSoon = False
@@ -57,21 +57,27 @@ async def getProductDetails(productLink, pincode):
             checkButton = await page.Jx('//span[contains(text(), "Check")]')
             await checkButton[0].click()
             try:
-                await page.waitForXPath('//div[contains(text(), "Currently out of stock in this area.")]', timeout=1500)
+                await page.waitForXPath('//div[contains(text(), "Currently out of stock in this area.")]', timeout=2000)
                 pincodeStock = False
             except:
                 try:
-                    await page.waitForXPath('//div[contains(text(), "Not a valid pincode")]', timeout=800)
+                    await page.waitForXPath('//div[contains(text(), "Not a valid pincode")]', timeout=1000)
                     pincodeStock = False
                 except:
                     try:
-                        await page.waitForXPath('//div[contains(text(), "No seller")]', timeout=1500)
+                        await page.waitForXPath('//div[contains(text(), "No seller")]', timeout=1000)
                         pincodeStock = False
                     except:
                         pincodeStock = True
         else:
             pincodeStock = False
         webPage = await page.content()
+
+        # Verification mechanism for TRUE pincode stock
+        if pincodeStock:
+            if webPage.__contains__('No seller') or webPage.__contains__('Not a valid pincode') or webPage.__contains__('out of stock'):
+                pincodeStock = False
+
         webPage = webPage.replace('&amp;', '&')
 
         try:
