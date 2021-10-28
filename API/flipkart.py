@@ -57,15 +57,15 @@ async def getProductDetails(productLink, pincode):
             checkButton = await page.Jx('//span[contains(text(), "Check")]')
             await checkButton[0].click()
             try:
-                await page.waitForXPath('//div[contains(text(), "Currently out of stock in this area.")]', timeout=2000)
+                await page.waitForXPath('//div[contains(text(), "Currently out of stock in this area.")]', timeout=2100)
                 pincodeStock = False
             except:
                 try:
-                    await page.waitForXPath('//div[contains(text(), "Not a valid pincode")]', timeout=1000)
+                    await page.waitForXPath('//div[contains(text(), "Not a valid pincode")]', timeout=1100)
                     pincodeStock = False
                 except:
                     try:
-                        await page.waitForXPath('//div[contains(text(), "No seller")]', timeout=1000)
+                        await page.waitForXPath('//div[contains(text(), "No seller")]', timeout=1100)
                         pincodeStock = False
                     except:
                         pincodeStock = True
@@ -112,8 +112,8 @@ async def getProductDetails(productLink, pincode):
                     originalPrice = currentPrice
             else:
                 try:
-                    originalPrice = webPage.split('_3I9_wc _2p6lqe')[1].split(
-                        '</div>')[0].split('>')[1].replace('₹', '').replace(',', '')
+                    originalPrice = int(webPage.split('_3I9_wc _2p6lqe')[1].split(
+                        '</div>')[0].split('>')[1].replace('₹', '').replace(',', ''))
                 except:
                     originalPrice = currentPrice
             discount = originalPrice-currentPrice
