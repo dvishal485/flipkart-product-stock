@@ -110,3 +110,10 @@ The API is easy to use and understand, but in case of any problem do check out t
 - [x] Add Support for more Products
 - [x] Get Product Price specific to the pincode
 - [x] Improve accuracy (worked for all Flipkart links which were tested)
+
+---
+
+## License & Copyright
+
+  - This Project is [Apache-2.0](./LICENSE) Licensed
+  - Copyright 2021 [Vishal Das](https://github.com/dvishal485)
